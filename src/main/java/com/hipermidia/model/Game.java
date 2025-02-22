@@ -18,8 +18,10 @@ public class Game {
     private Integer maxTurnsNormal;
     @SerializedName("max_turns_hard")
     private Integer maxTurnsHard;
-    private Double attack = 10.0;
-    private Double defense = 8.0;
-    private Double life = 22.0;
+    private Player player;
     private List<Location> locations;
+
+
+
+
 }

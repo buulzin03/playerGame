@@ -65,7 +65,26 @@ public class GameController {
         boolean gameRunning = true;
         while (gameRunning) {
             String command = view.getPlayerCommand();
-            processCommand(command);
+
+            if(command.equals("inventario")) {
+                currentState = GameStates.SHOWINGINVENTORY;
+                processCommand();
+            } else if(command.equals("olhar")) {
+                currentState = GameStates.SHOWINGLOCATION;
+                processCommand();
+            } else if(command.equals("help")) {
+                currentState = GameStates.SHOWINGHELP;
+                processCommand();
+            } else if(command.equals("status")) {
+                currentState = GameStates.SHOWINGSTATUS;
+                processCommand();
+            } else if(command.equals("turno")) {
+                currentState = GameStates.SHOWINGTURN;
+                processCommand();
+            } else if(command.contains("usar") || command.contains("equipar")) {
+                currentState = GameStates.USINGITEM;
+                processCommand();
+            }
             // Verificar condições de fim de jogo
             if(currentGame.getMaxTurnsEasy() == currentGame.getCurrentTurn()) {
                 gameRunning = false;
@@ -73,7 +92,7 @@ public class GameController {
         }
     }
 
-    private void processCommand(String command) {
+    private void processCommand() {
         // Implementar processamento de comandos
         switch (currentState) {
             case INIT:
@@ -90,13 +109,19 @@ public class GameController {
             case SHOWINGTURN:
                 view.showCurrentTurn(currentGame.getCurrentTurn());
                 break;
-            case SHOWHELP:
+            case SHOWINGHELP:
                 view.help();
                 break;
             case FIGHTING:
+                
+                currentGame.increaseTurn();
                 break;
             case USINGITEM:
-                currentGame.getPlayer().useItem(command);
+                view.showInventory(currentGame.getPlayer().getInventory());
+                System.out.println("Qual item deseja usar ou equipar? ");
+                String idItem = view.getPlayerCommand();
+                currentGame.getPlayer().useItem(idItem);
+                view.showPlayerStatus(currentGame.getPlayer());
 
             
         }

@@ -45,6 +45,7 @@ public class Player {
 
     public void useItem(String idItem) {
         
+        
         Item item = this.getInventory().stream().filter(it -> it.getId().equals(idItem)).findFirst().get();
         if(item.isCanTake()){
             if(item.getDescription().contains("vida")) {
@@ -56,7 +57,7 @@ public class Player {
             }else if(item.getDescription().contains("defesa")){
                 Double valueDefense = Double.parseDouble(item.getDescription().replaceAll("[^0-9]", ""));
                 this.defense += valueDefense;
-            }
+            } 
         }
     }
 }

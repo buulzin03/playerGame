@@ -2,6 +2,7 @@ package com.hipermidia.controller;
 
 import com.google.gson.Gson;
 import com.hipermidia.model.*;
+import com.hipermidia.model.states.GameStates;
 import com.hipermidia.view.GameView;
 
 import java.io.File;
@@ -12,6 +13,8 @@ public class GameController {
     private Game currentGame;
     private Location currentLocation;
     private final GameView view;
+    private GameStates currentState = GameStates.INIT;
+
 
     public GameController(GameView view) {
         this.view = view;
@@ -72,20 +75,30 @@ public class GameController {
 
     private void processCommand(String command) {
         // Implementar processamento de comandos
-        switch (command.toLowerCase()) {
-            case "olhar":
+        switch (currentState) {
+            case INIT:
+                initializeGameState();
+            case SHOWINGLOCATION:
                 view.showLocationInfo(currentLocation);
                 break;
-            case "inventario":
+            case SHOWINGINVENTORY:
                 view.showInventory(currentGame.getPlayer().getInventory());
                 break;
-            case "status":
+            case SHOWINGSTATUS:
                 view.showPlayerStatus(currentGame.getPlayer());
                 break;
-            case "turno":
+            case SHOWINGTURN:
                 view.showCurrentTurn(currentGame.getCurrentTurn());
-            case "help":
+                break;
+            case SHOWHELP:
                 view.help();
+                break;
+            case FIGHTING:
+                break;
+            case USINGITEM:
+                currentGame.getPlayer().useItem(command);
+
+            
         }
     }
 

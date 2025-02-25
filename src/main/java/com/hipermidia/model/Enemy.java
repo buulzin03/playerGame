@@ -1,6 +1,14 @@
 package com.hipermidia.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Enemy {
-    private Double attack = 12.0;
-    private Double defense = 7.0;
+    private int attack;
+    private int defense;
+    private Result result;
+
+    
 }

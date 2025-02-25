@@ -1,0 +1,132 @@
+
+    {
+      "title": "Aventura na Floresta Encantada",
+      "description": "Uma jornada épica através de uma floresta mágica cheia de mistérios e desafios.",
+      "author": "Desenvolvedor Fantástico",
+      "startLocationId": "1",
+      "max_itens": "5",
+      "max_turns_easy": "20",
+      "max_turns_normal": "15",
+      "max_turns_hard": "10",
+      "player": {
+
+        "attack": 15,
+        "defense": 10,
+        "life": 30,
+        "inventory": [
+          {
+            "id": "1",
+            "name": "Poção de Vida",
+            "description": "Restaura 10 pontos de vida.",
+            "can_take": true,
+            "inactive": false
+          }
+        
+        ]
+      },
+      "locations": [
+        {
+          "id": "1",
+          "name": "Clareira Mágica",
+          "description": "Uma clareira iluminada por luzes dançantes, cercada por árvores altas.",
+          "exits": [
+            {
+              "direction": "norte",
+              "targetLocationId": "2",
+              "description": "Um caminho que leva mais fundo na floresta.",
+              "inactive": false
+            }
+          ],
+          "items": [
+            {
+              "id": "1",
+              "name": "Poção de Vida",
+              "description": "Restaura 10 pontos de vida.",
+              "can_take": true,
+              "inactive": false
+            }
+          ],
+          "npcs": [
+            {
+              "id": "1",
+              "name": "Guia da Floresta",
+              "description": "Um sábio que conhece todos os segredos da floresta.",
+              "inactive": false,
+              "dialogues": [
+                {
+                  "text": "Bem-vindo, viajante! O que você procura?",
+                  "responses": [
+                    {
+                      "result": {
+                        "active": [],
+                        "lose_item": []
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "puzzles": [
+            {
+              "id": "1",
+              "description": "Resolva o enigma da árvore antiga.",
+              "solution": {
+                "requiredItems": [
+                  "Chave Mágica"
+                ],
+                "actions": "Fale com a árvore."
+              },
+              "result": {
+                "active": [
+                  "Portal Secreto"
+                ],
+                "lose_item": [
+                  "Chave Mágica"
+                ],
+                "lose_life": 0
+              }
+            }
+          ],
+          "enemies": [
+            {
+              "attack": 10,
+              "defense": 5,
+              "result": {
+                "active": [],
+                "lose_item": [],
+                "lose_life": 5
+              }
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "Caverna Sombria",
+          "description": "Uma caverna escura e úmida, onde ecos de criaturas podem ser ouvidos.",
+          "exits": [
+            {
+              "direction": "sul",
+              "targetLocationId": "1",
+              "description": "O caminho de volta para a clareira mágica.",
+              "inactive": false
+            }
+          ],
+          "items": [],
+          "npcs": [],
+          "puzzles": [],
+          "enemies": [
+            {
+              "attack": 12,
+              "defense": 8,
+              "result": {
+                "active": [],
+                "lose_item": [],
+                "lose_life": 10
+              }
+            }
+          ]
+        }
+      ]
+    }
+  

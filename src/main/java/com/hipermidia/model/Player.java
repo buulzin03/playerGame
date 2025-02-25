@@ -1,11 +1,62 @@
 package com.hipermidia.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
 public class Player {
     
-    private Double attack = 12.0;
-    private Double defense = 8.0;
-    private Double life = 22.0;
+    private Double attack;
+    private Double defense;
+    private Double life;
+    @SerializedName("max_itens")
+    private Integer maxItens;
     
+    private List<Item> inventory;
+
+
+    public Player(Double attack, Double defense, Double life, Integer maxItens) {
+        this.attack = attack;
+        this.defense = defense;
+        this.life = life;
+        this.maxItens = maxItens;
+        this.inventory = new ArrayList<>();
+    }
+
     
 
+    public boolean addItem(Item item) {
+        if (inventory.size() < maxItens) {
+            inventory.add(item);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeItem(Item item) {
+        return inventory.remove(item);
+    }
+
+    public void useItem(String idItem) {
+        
+        Item item = this.getInventory().stream().filter(it -> it.getId().equals(idItem)).findFirst().get();
+        if(item.isCanTake()){
+            if(item.getDescription().contains("vida")) {
+                Double valueLife = Double.parseDouble(item.getDescription().replaceAll("[^0-9]", ""));
+                this.life += valueLife;
+            }else if(item.getDescription().contains("ataque")) {
+                Double valueAttack = Double.parseDouble(item.getDescription().replaceAll("[^0-9]", ""));
+                this.attack += valueAttack;
+            }else if(item.getDescription().contains("defesa")){
+                Double valueDefense = Double.parseDouble(item.getDescription().replaceAll("[^0-9]", ""));
+                this.defense += valueDefense;
+            }
+        }
+    }
 }

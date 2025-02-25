@@ -1,18 +1,103 @@
 package com.hipermidia.controller;
 
+import com.google.gson.Gson;
+import com.hipermidia.model.*;
+import com.hipermidia.view.GameView;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class GameController {
-    
+    private Game currentGame;
+    private Location currentLocation;
+    private final GameView view;
 
-    
+    public GameController(GameView view) {
+        this.view = view;
+    }
+
+    public void start() {
+        File folder = new File("src/main/java/com/hipermidia/gamefile");
+        File[] listOfFiles = folder.listFiles((dir, name) -> name.endsWith(".json"));
+
+        if (listOfFiles == null || listOfFiles.length == 0) {
+            view.noGameFound();
+            return;
+        }
+
+        File gameFile = view.chooseGame(listOfFiles);
+        if (loadGame(gameFile)) {
+            initializeGameState();
+            gameLoop();
+        }
+    }
+
+    private boolean loadGame(File gameFile) {
+        try (FileReader reader = new FileReader(gameFile)) {
+            Gson gson = new Gson();
+            currentGame = gson.fromJson(reader, Game.class);
+            currentLocation = findLocationById(currentGame.getStartLocationId());
+            return true;
+        } catch (IOException e) {
+            view.showError("Erro ao carregar o jogo: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private void initializeGameState() {
+        view.showGameIntro(currentGame.getTitle(), currentGame.getDescription(), currentGame.getAuthor());
+        view.showLocationInfo(currentLocation);
+    }
+
+    private Location findLocationById(Integer locationId) {
+        System.out.println(currentGame.getStartLocationId());
+        return currentGame.getLocations().stream()
+                .filter(loc -> loc.getId().equals(locationId))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Location not found: " + locationId));
+    }
+
+    private void gameLoop() {
+        boolean gameRunning = true;
+        while (gameRunning) {
+            String command = view.getPlayerCommand();
+            processCommand(command);
+            // Verificar condições de fim de jogo
+            if(currentGame.getMaxTurnsEasy() == currentGame.getCurrentTurn()) {
+                gameRunning = false;
+            }
+        }
+    }
+
+    private void processCommand(String command) {
+        // Implementar processamento de comandos
+        switch (command.toLowerCase()) {
+            case "olhar":
+                view.showLocationInfo(currentLocation);
+                break;
+            case "inventario":
+                view.showInventory(currentGame.getPlayer().getInventory());
+                break;
+            case "status":
+                view.showPlayerStatus(currentGame.getPlayer());
+                break;
+            case "turno":
+                view.showCurrentTurn(currentGame.getCurrentTurn());
+            case "help":
+                view.help();
+        }
+    }
+
     public void talkingNpc() {
-
+        // Lógica para interação com NPCs
     }
 
     public void resolvingPuzzle() {
-
+        // Lógica para resolução de puzzles
     }
 
-    public void fighting() {
-
-    }
+    // public void fighting() {
+    //     if(currentGame.getPlayer().getDefense() < currentLocation.getEnemies().)
+    // }
 }

@@ -1,8 +1,20 @@
 package com.hipermidia.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Exit {
-    private Integer direction;
-    private Integer targetLocationId;
+    private String direction;
+    
+    @SerializedName("targetLocationId")
+    private String targetLocationId;
+    
     private String description;
-    private Boolean inactive = true;
+    private boolean inactive;
+
+    
 }

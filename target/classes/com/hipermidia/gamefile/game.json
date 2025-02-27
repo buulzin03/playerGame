@@ -1,0 +1,224 @@
+{
+  "title": "Aventura na Floresta Encantada",
+  "description": "Uma jornada épica através de uma floresta mágica cheia de mistérios e desafios.",
+  "author": "Desenvolvedor Fantástico",
+  "startLocationId": "1",
+  
+  "max_turns_easy": 20,
+  "max_turns_normal": 15,
+  "max_turns_hard": 10,
+  "player": {
+    "attack": 15,
+    "defense": 10,
+    "life": 30,
+    "max_itens": 10,
+    "inventory": [
+      {
+        "id": "1",
+        "name": "Poção de Vida",
+        "description": "Restaura 10 pontos de vida.",
+        "can_take": true,
+        "inactive": false
+      },
+      {
+        "id": "2",
+        "name": "espada longa",
+        "description": "aumenta em 10 o ataque fisico",
+        "can_take": true,
+        "inactive": false
+      }
+    
+    ]
+  },
+  "locations": [
+    {
+      "id": "1",
+      "name": "Clareira Mágica",
+      "description": "Uma clareira iluminada por luzes dançantes, cercada por árvores altas.",
+      "exits": [
+        {
+          "direction": "norte",
+          "targetLocationId": "2",
+          "description": "Um caminho que leva mais fundo na floresta.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": "1",
+          "name": "Poção de Vida",
+          "description": "Restaura 10 pontos de vida.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [
+        {
+          "id": "1",
+          "name": "Guia da Floresta",
+          "description": "Um sábio que conhece todos os segredos da floresta.",
+          "inactive": false,
+          "dialogues": [
+            {
+              "text": "Bem-vindo, viajante! O que você procura?",
+              "responses": [
+                {
+                  "result": {
+                    "active": [],
+                    "lose_item": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "puzzles": [
+        {
+          "id": "1",
+          "description": "Resolva o enigma da árvore antiga.",
+          "solution": {
+            "requiredItems": [
+              "Chave Mágica"
+            ],
+            "actions": "Fale com a árvore."
+          },
+          "result": {
+            "active": [
+              "Portal Secreto"
+            ],
+            "lose_item": [
+            ],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "id": "1",
+          "attack": 15,
+          "defense": 12,
+          "result": {
+            "active": [],
+            "lose_item": [
+              {
+                "id": "5",
+                "name": "espada Gigante",
+                "description": "aumenta em 20 o ataque fisico",
+                "can_take": true,
+                "inactive": false
+              }
+            ],
+            "lose_life": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Caverna Sombria",
+      "description": "Uma caverna escura e úmida, onde ecos de criaturas podem ser ouvidos.",
+      "exits": [
+        {
+          "direction": "sul",
+          "targetLocationId": "1",
+          "description": "O caminho de volta para a clareira mágica.",
+          "inactive": false
+        }
+      ],
+      "items": [],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "id": "1",
+          "attack": 12,
+          "defense": 8,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Ruínas Antigas",
+      "description": "Restos de uma civilização perdida, cobertos de vegetação.",
+      "exits": [
+        {
+          "direction": "leste",
+          "targetLocationId": "4",
+          "description": "Um caminho que leva a uma caverna misteriosa.",
+          "inactive": false
+        },
+        {
+          "direction": "oeste",
+          "targetLocationId": "2",
+          "description": "O caminho de volta para a caverna sombria.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": "3",
+          "name": "Cristal Brilhante",
+          "description": "Um cristal que brilha intensamente, pode ter propriedades mágicas.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "id": "2",
+          "attack": 18,
+          "defense": 10,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Caverna Misteriosa",
+      "description": "Uma caverna profunda com ecos estranhos e sombras que se movem.",
+      "exits": [
+        {
+          "direction": "oeste",
+          "targetLocationId": "3",
+          "description": "O caminho de volta para as ruínas antigas.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": "4",
+          "name": "Lanterna",
+          "description": "Uma lanterna que ilumina o caminho nas trevas.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "id": "3",
+          "attack": 20,
+          "defense": 15,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 12
+          }
+        }
+      ]
+    }
+  ]
+}

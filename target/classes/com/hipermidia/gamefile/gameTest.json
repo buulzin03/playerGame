@@ -1,0 +1,902 @@
+{
+    "title": "Aventura na Floresta Encantada",
+    "description": "Uma jornada épica através de uma floresta mágica ancestral, onde cada caminho esconde segredos milenares, criaturas místicas e desafios arcanos. Como um aventureiro escolhido, você deve desvendar os mistérios da floresta e restaurar o equilíbrio perdido.",
+    "author": "Desenvolvedor Fantástico",
+    "startLocationId": "1",
+    "max_turns_easy": 100,
+    "max_turns_normal": 75,
+    "max_turns_hard": 50,
+    "player": {
+      "attack": 20,
+      "defense": 15,
+      "life": 50,
+      "max_itens": 25,
+      "inventory": [
+        {
+          "id": "1",
+          "name": "Poção de Vida Menor",
+          "description": "Restaura 10 pontos de vida.",
+          "can_take": true,
+          "inactive": false
+        },
+        {
+          "id": "2",
+          "name": "Adaga Inicial",
+          "description": "Aumenta em 5 o ataque físico.",
+          "can_take": true,
+          "inactive": false
+        },
+        {
+          "id": "3",
+          "name": "Amuleto de Proteção",
+          "description": "Aumenta em 3 a defesa.",
+          "can_take": true,
+          "inactive": false
+        }
+      ]
+    },
+    "locations": [
+      {
+        "id": "1",
+        "name": "Clareira do Despertar",
+        "description": "Uma clareira serena banhada por luzes mágicas dançantes. Flores luminescentes pulsam suavemente e borboletas encantadas flutuam no ar, anunciando o início de uma grande aventura.",
+        "exits": [
+          {
+            "direction": "norte",
+            "targetLocationId": "2",
+            "description": "Um caminho coberto por trepadeiras brilhantes.",
+            "inactive": false
+          },
+          {
+            "direction": "leste",
+            "targetLocationId": "3",
+            "description": "Uma passagem entre árvores antigas.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "4",
+            "name": "Pergaminho Místico",
+            "description": "Um pergaminho antigo com escrituras enigmáticas que pode revelar segredos da floresta.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "1",
+            "name": "Ancião da Floresta",
+            "description": "Um velho druida com olhos que brilham como esmeraldas e um vasto conhecimento dos segredos naturais.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Bem-vindo, viajante! A floresta tem esperado por alguém como você. Procure os segredos perdidos e siga o caminho dos elementos.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Portal do Bosque Antigo"],
+                      "lose_item": [
+                        {
+                          "id": "5",
+                          "name": "Mapa da Floresta",
+                          "description": "Um mapa mágico que revela caminhos ocultos e rotas esquecidas.",
+                          "can_take": true,
+                          "inactive": false
+                        }
+                      ],
+                      "lose_life": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "1",
+            "description": "Círculo de Cogumelos: Um arranjo de cogumelos brilhantes forma um padrão misterioso. Talvez uma dança ancestral possa despertar a magia oculta.",
+            "solution": {
+              "requiredItems": ["Cristal da Sabedoria"],
+              "actions": "dançar no círculo de cogumelos"
+            },
+            "result": {
+              "active": ["Passagem Secreta"],
+              "lose_item": [],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "1",
+            "name": "Espírito Travesso",
+            "attack": 10,
+            "defense": 5,
+            "result": {
+              "active": [],
+              "lose_item": [
+                {
+                  "id": "6",
+                  "name": "Poeira de Fada",
+                  "description": "Um pó mágico que restaura 5 pontos de vida.",
+                  "can_take": true,
+                  "inactive": false
+                }
+              ],
+              "lose_life": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Bosque dos Sussurros",
+        "description": "Um bosque denso onde as árvores parecem sussurrar segredos antigos. Sombras dançam entre os troncos retorcidos e o ar vibra com uma energia ancestral.",
+        "exits": [
+          {
+            "direction": "sul",
+            "targetLocationId": "1",
+            "description": "O caminho de volta para a Clareira do Despertar.",
+            "inactive": false
+          },
+          {
+            "direction": "norte",
+            "targetLocationId": "4",
+            "description": "Uma trilha que serpenteia entre árvores anciãs.",
+            "inactive": false
+          },
+          {
+            "direction": "leste",
+            "targetLocationId": "7",
+            "description": "Um caminho escondido entre a vegetação densa.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "8",
+            "name": "Cajado Druídico",
+            "description": "Um cajado rúnico que aumenta em 12 o ataque mágico de seu portador.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "2",
+            "name": "Espírito da Árvore",
+            "description": "Uma entidade etérea que emerge de um carvalho ancestral, guardião dos segredos do bosque.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Os segredos da floresta se revelam àqueles que sabem escutar. Traga-me a Essência da Natureza e eu lhe mostrarei um caminho oculto.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Caminho do Norte"],
+                      "lose_item": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "2",
+            "description": "Altar Druídico: Um antigo altar com símbolos elementais que clama por um ritual específico.",
+            "solution": {
+              "requiredItems": ["Pergaminho Místico"],
+              "actions": "tocar os símbolos na ordem: água, fogo, terra, ar"
+            },
+            "result": {
+              "active": ["Portal Elemental"],
+              "lose_item": [
+                {
+                  "id": "9",
+                  "name": "Amuleto Elemental",
+                  "description": "Um amuleto que aumenta em 8 a defesa mágica do seu portador.",
+                  "can_take": true,
+                  "inactive": false
+                }
+              ],
+              "lose_life": 5
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "2",
+            "name": "Lobo Fantasma",
+            "attack": 12,
+            "defense": 8,
+            "result": {
+              "active": [],
+              "lose_item": [
+                {
+                  "id": "10",
+                  "name": "Pelo Mágico",
+                  "description": "Um pelo encantado que pode ser utilizado na confecção de feitiços poderosos.",
+                  "can_take": true,
+                  "inactive": false
+                }
+              ],
+              "lose_life": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name": "Ruínas Antigas",
+        "description": "Restos de uma civilização perdida, onde a natureza se reinventa sobre estruturas de pedra desgastadas pelo tempo e inscritas com enigmas esquecidos.",
+        "exits": [
+          {
+            "direction": "oeste",
+            "targetLocationId": "1",
+            "description": "Retorno à clareira serena.",
+            "inactive": false
+          },
+          {
+            "direction": "leste",
+            "targetLocationId": "4",
+            "description": "Um túnel entre as ruínas, marcado por relíquias do passado.",
+            "inactive": false
+          },
+          {
+            "direction": "sul",
+            "targetLocationId": "5",
+            "description": "Um caminho que leva ao vale misterioso.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "11",
+            "name": "Cristal Brilhante",
+            "description": "Um cristal de luz intensa, possivelmente imbuído de poderes místicos.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "3",
+            "name": "Guardião das Ruínas",
+            "description": "Um espírito ancestral encarregado de proteger os segredos escondidos nas paredes destas ruínas.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Prove seu valor decifrando o enigma das inscrições e revele os segredos que o tempo esqueceu.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Passagem Oculta"],
+                      "lose_item": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "3",
+            "description": "Enigma das Inscrições: Decifre os símbolos ancestrais gravados na pedra para desbloquear um segredo perdido.",
+            "solution": {
+              "requiredItems": ["Pergaminho Místico", "Cristal Brilhante"],
+              "actions": "decifrar o enigma"
+            },
+            "result": {
+              "active": ["Passagem Oculta"],
+              "lose_item": [
+                {
+                  "id": "12",
+                  "name": "Relíquia Antiga",
+                  "description": "Um artefato de valor incalculável, emanando uma energia ancestral.",
+                  "can_take": true,
+                  "inactive": false
+                }
+              ],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "3",
+            "name": "Sentinela de Pedra",
+            "attack": 20,
+            "defense": 15,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 10
+            }
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Caverna Misteriosa",
+        "description": "Uma caverna sombria repleta de ecos e segredos. As paredes úmidas e os recantos escuros escondem mistérios que somente os mais corajosos ousam desvendar.",
+        "exits": [
+          {
+            "direction": "oeste",
+            "targetLocationId": "3",
+            "description": "Retorno às ruínas antigas.",
+            "inactive": false
+          },
+          {
+            "direction": "norte",
+            "targetLocationId": "6",
+            "description": "Um caminho que leva às profundezas do lago das ilusões.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "13",
+            "name": "Lanterna",
+            "description": "Uma lanterna robusta que ilumina os recantos mais sombrios da caverna.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "4",
+            "name": "Místico Errante",
+            "description": "Um eremita que habita a caverna, guardião de segredos e conselhos enigmáticos.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "A escuridão revela verdades ocultas. Use a lanterna e siga o som dos sussurros para encontrar a saída.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Saída Secreta"],
+                      "lose_item": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "4",
+            "description": "Eco dos Ecos: Siga os sussurros que reverberam pelas paredes para encontrar uma saída oculta.",
+            "solution": {
+              "requiredItems": ["Lanterna"],
+              "actions": "seguir o som dos sussurros"
+            },
+            "result": {
+              "active": ["Saída Secreta"],
+              "lose_item": [],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "4",
+            "name": "Morcego Assombrado",
+            "attack": 15,
+            "defense": 10,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 6
+            }
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Vale dos Ecos",
+        "description": "Um vale onde cada som reverbera em múltiplos ecos, criando ilusões e armadilhas para os incautos que se atrevem a cruzar.",
+        "exits": [
+          {
+            "direction": "norte",
+            "targetLocationId": "7",
+            "description": "Um caminho que leva à imponente Montanha do Destino.",
+            "inactive": false
+          },
+          {
+            "direction": "sul",
+            "targetLocationId": "3",
+            "description": "Retorno às enigmáticas ruínas antigas.",
+            "inactive": false
+          },
+          {
+            "direction": "leste",
+            "targetLocationId": "8",
+            "description": "Uma trilha oculta que serpenteia entre colinas misteriosas.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "14",
+            "name": "Escudo de Reflexão",
+            "description": "Um escudo encantado que reflete ataques mágicos e protege contra feitiços adversos.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "5",
+            "name": "Sábio Errante",
+            "description": "Um viajante que percorre o vale, conhecedor dos segredos do tempo e dos ecos do passado.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Cada eco conta uma história. Reúna os fragmentos do tempo e descubra a verdade oculta.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Fragmentos do Tempo"],
+                      "lose_item": [
+                        {
+                          "id": "15",
+                          "name": "Relíquia do Vale",
+                          "description": "Um artefato que contém memórias ancestrais e segredos esquecidos.",
+                          "can_take": true,
+                          "inactive": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "5",
+            "description": "Labirinto dos Ecos: Caminhe em silêncio, ouça o eco correto e encontre o caminho para a verdade.",
+            "solution": {
+              "requiredItems": ["Escudo de Reflexão"],
+              "actions": "caminhar em silêncio e ouvir o eco correto"
+            },
+            "result": {
+              "active": ["Caminho dos Ecos"],
+              "lose_item": [],
+              "lose_life": 3
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "5",
+            "name": "Sombra Errante",
+            "attack": 18,
+            "defense": 12,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 7
+            }
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "name": "Lago das Ilusões",
+        "description": "Um lago sereno cujas águas refletem não apenas o ambiente, mas também os desejos e medos ocultos, revelando verdades inesperadas.",
+        "exits": [
+          {
+            "direction": "sul",
+            "targetLocationId": "4",
+            "description": "Retorno à sombria Caverna Misteriosa.",
+            "inactive": false
+          },
+          {
+            "direction": "leste",
+            "targetLocationId": "7",
+            "description": "Uma trilha que leva à imponente Montanha do Destino.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "16",
+            "name": "Bússola Encantada",
+            "description": "Uma bússola mágica que aponta para os desejos mais profundos do coração, revelando caminhos ocultos.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "6",
+            "name": "Espírito da Água",
+            "description": "Uma entidade fluida que habita o lago, revelando segredos através dos seus reflexos.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "As águas revelam verdades ocultas. Aceite este presente e siga com sabedoria.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Reflexão Interior"],
+                      "lose_item": [
+                        {
+                          "id": "17",
+                          "name": "Pingente da Serenidade",
+                          "description": "Um amuleto que acalma a mente e o espírito, proporcionando clareza em meio ao caos.",
+                          "can_take": true,
+                          "inactive": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "6",
+            "description": "Enigma do Reflexo: Observe atentamente o seu reflexo na água para desvendar a verdade oculta.",
+            "solution": {
+              "requiredItems": ["Bússola Encantada"],
+              "actions": "observar o reflexo na água"
+            },
+            "result": {
+              "active": ["Ilha Oculta"],
+              "lose_item": [],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "6",
+            "name": "Serpente Mística",
+            "attack": 22,
+            "defense": 14,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 9
+            }
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "name": "Montanha do Destino",
+        "description": "Uma montanha imponente onde o destino se esculpe a cada passo, e somente os mais dignos alcançam seu cume sagrado.",
+        "exits": [
+          {
+            "direction": "sul",
+            "targetLocationId": "5",
+            "description": "Um caminho que desce ao misterioso Vale dos Ecos.",
+            "inactive": false
+          },
+          {
+            "direction": "norte",
+            "targetLocationId": "8",
+            "description": "Uma trilha íngreme que leva ao antigo Templo Esquecido.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "18",
+            "name": "Armadura do Herói",
+            "description": "Uma armadura lendária que protege seu portador dos ataques mais ferozes.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "7",
+            "name": "Guardião da Montanha",
+            "description": "Um guerreiro ancestral que vela pelo caminho até o cume, desafiando os que não possuem a coragem necessária.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Somente os dignos alcançarão o cume. Prove seu valor escalando este desafio.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Caminho Secreto"],
+                      "lose_item": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "7",
+            "description": "Desafio das Alturas: Escale o penhasco seguindo os sinais da natureza e prove sua determinação.",
+            "solution": {
+              "requiredItems": ["Armadura do Herói"],
+              "actions": "escalar o penhasco com coragem"
+            },
+            "result": {
+              "active": ["Cume do Destino"],
+              "lose_item": [],
+              "lose_life": 5
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "7",
+            "name": "Águia de Fúria",
+            "attack": 25,
+            "defense": 20,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 8
+            }
+          }
+        ]
+      },
+      {
+        "id": "8",
+        "name": "Templo Esquecido",
+        "description": "Um antigo templo coberto de musgo, onde as divindades da natureza repousam e aguardam o despertar daqueles que se atrevem a buscá-las.",
+        "exits": [
+          {
+            "direction": "sul",
+            "targetLocationId": "7",
+            "description": "Retorno à imponente Montanha do Destino.",
+            "inactive": false
+          },
+          {
+            "direction": "oeste",
+            "targetLocationId": "9",
+            "description": "Um corredor sombrio que leva à Floresta de Sombras.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "19",
+            "name": "Chave Sagrada",
+            "description": "Uma chave mágica que abre portais para conhecimentos e mistérios antigos.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "8",
+            "name": "Sacerdotisa Ancestral",
+            "description": "Uma figura enigmática que guarda os segredos do templo e a sabedoria dos tempos passados.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "A sabedoria dos tempos se revela àqueles que respeitam o sagrado. Aceite meu presente e permita que o conhecimento flua.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Sala dos Segredos"],
+                      "lose_item": [
+                        {
+                          "id": "20",
+                          "name": "Orbe do Conhecimento",
+                          "description": "Um orbe repleto da sabedoria dos ancestrais, capaz de iluminar mentes.",
+                          "can_take": true,
+                          "inactive": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "8",
+            "description": "Enigma dos Deuses: Alinhe as estátuas na ordem correta para despertar os poderes adormecidos do templo.",
+            "solution": {
+              "requiredItems": ["Chave Sagrada"],
+              "actions": "alinhar as estátuas"
+            },
+            "result": {
+              "active": ["Câmara Oculta"],
+              "lose_item": [],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "8",
+            "name": "Sentinela do Templo",
+            "attack": 30,
+            "defense": 25,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 12
+            }
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "name": "Floresta de Sombras",
+        "description": "Uma parte obscura da floresta onde a luz é absorvida pela densa vegetação, e as sombras ganham vida própria, revelando segredos inomináveis.",
+        "exits": [
+          {
+            "direction": "leste",
+            "targetLocationId": "8",
+            "description": "Retorno ao Templo Esquecido.",
+            "inactive": false
+          },
+          {
+            "direction": "norte",
+            "targetLocationId": "10",
+            "description": "Um caminho que leva ao Jardim dos Encantos.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "21",
+            "name": "Elixir das Trevas",
+            "description": "Um elixir místico que concede visão na escuridão e revela segredos ocultos.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "9",
+            "name": "Vidente Sombria",
+            "description": "Uma mística que enxerga através dos véus da realidade, guiada pelas sombras.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Entre as sombras, a verdade se revela. Tome este elixir e desperte seu poder interior.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Véu da Realidade"],
+                      "lose_item": []
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "9",
+            "description": "Ritual das Sombras: Recite os versos do esquecimento para abrir o portal que une luz e trevas.",
+            "solution": {
+              "requiredItems": ["Elixir das Trevas"],
+              "actions": "recitar os versos"
+            },
+            "result": {
+              "active": ["Portal das Sombras"],
+              "lose_item": [],
+              "lose_life": 4
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "9",
+            "name": "Assombração Noturna",
+            "attack": 28,
+            "defense": 18,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 10
+            }
+          }
+        ]
+      },
+      {
+        "id": "10",
+        "name": "Jardim dos Encantos",
+        "description": "Um jardim exuberante onde a natureza e a magia se entrelaçam, repleto de flores encantadas e árvores falantes que sussurram os segredos da vida.",
+        "exits": [
+          {
+            "direction": "oeste",
+            "targetLocationId": "9",
+            "description": "Retorno à Floresta de Sombras.",
+            "inactive": false
+          },
+          {
+            "direction": "norte",
+            "targetLocationId": "1",
+            "description": "Um caminho que retorna à Clareira do Despertar, completando o ciclo da aventura.",
+            "inactive": false
+          }
+        ],
+        "items": [
+          {
+            "id": "22",
+            "name": "Flor da Eternidade",
+            "description": "Uma flor mística com poderes curativos incomparáveis, símbolo da renovação da vida.",
+            "can_take": true,
+            "inactive": false
+          }
+        ],
+        "npcs": [
+          {
+            "id": "10",
+            "name": "Guardião do Jardim",
+            "description": "Um ser etéreo que protege os segredos e encantos deste jardim, garantindo que apenas os puros de coração tenham acesso às suas maravilhas.",
+            "inactive": false,
+            "dialogues": [
+              {
+                "text": "Somente aqueles que amam e respeitam a natureza poderão desvendar os mistérios deste lugar. Aceite este fragmento da vida.",
+                "responses": [
+                  {
+                    "result": {
+                      "active": ["Revelação dos Segredos"],
+                      "lose_item": [
+                        {
+                          "id": "23",
+                          "name": "Fragmento de Vida",
+                          "description": "Um fragmento que simboliza a essência vital da floresta e renova a energia de seu portador.",
+                          "can_take": true,
+                          "inactive": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "puzzles": [
+          {
+            "id": "10",
+            "description": "Dança das Estações: Dance sob a luz dos ciclos naturais para revelar o caminho da renovação e da transformação.",
+            "solution": {
+              "requiredItems": ["Flor da Eternidade"],
+              "actions": "dançar sob a luz das estações"
+            },
+            "result": {
+              "active": ["Caminho da Renovação"],
+              "lose_item": [],
+              "lose_life": 0
+            }
+          }
+        ],
+        "enemies": [
+          {
+            "id": "10",
+            "name": "Serpente Venenosa",
+            "attack": 20,
+            "defense": 15,
+            "result": {
+              "active": [],
+              "lose_item": [],
+              "lose_life": 7
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
